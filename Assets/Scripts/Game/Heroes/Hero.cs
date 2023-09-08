@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class Hero : MonoBehaviour
     public Abilities Ability => _ability;
     
     private bool _repositionSelf = false;
+
+    public static event Action OnObstacleHit;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,7 @@ public class Hero : MonoBehaviour
         if (obstacle.Weakness != _ability)
         {
             Debug.Log("You took a hit");
+            OnObstacleHit?.Invoke();
         }
         else
         {
