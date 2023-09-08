@@ -8,6 +8,7 @@ public class TimerSwitch : MonoBehaviour
     [SerializeField] private float _time;
     [SerializeField] private string _sceneToSwitch;
     [SerializeField] private TextMeshProUGUI _countdown;
+    [SerializeField] private float _fontSize = 50;
 
     // Update is called once per frame
     void Update()
@@ -25,7 +26,7 @@ public class TimerSwitch : MonoBehaviour
     {
         float remainders = _time % (int)_time;
         _countdown.text = "" + (int)_time;
-        _countdown.fontSize = remainders * 100;
+        _countdown.fontSize = remainders * _fontSize;
         _countdown.alpha = remainders;
     }
 }
