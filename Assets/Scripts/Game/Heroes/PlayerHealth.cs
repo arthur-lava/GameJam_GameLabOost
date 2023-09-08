@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ResetHP();
         Hero.OnObstacleHit += DecreaseHP;
     }
 
@@ -23,12 +24,21 @@ public class PlayerHealth : MonoBehaviour
     {
         
     }
+    private void ResetHP() {
+        HP = 2;
+    }
 
     private void DecreaseHP()
     {
-
+        HP -= 1;
+        if(HP <= 1) {
+            Death();
+        }
     }
 
+    private void Death() {
+        // Show End UI
+    }
     private void OnDestroy()
     {
         Hero.OnObstacleHit -= DecreaseHP;
